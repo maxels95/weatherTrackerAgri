@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "6vVywNKhvxDHHzCSYqbHz/QYOGBFDD+b5cxtctptckw=",
+  "Source": "agriWeatherTracker",
+  "BasePath": "_content/agriWeatherTracker",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
