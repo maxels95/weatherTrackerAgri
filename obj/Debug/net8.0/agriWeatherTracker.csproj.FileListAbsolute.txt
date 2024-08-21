@@ -1,6 +1,3 @@
-C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\appsetting.Production.json
-C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\appsettings.json
 C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\agriWeatherTracker.exe
 C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\agriWeatherTracker.deps.json
 C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\agriWeatherTracker.runtimeconfig.json
@@ -110,3 +107,5 @@ C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\obj\Debug\net8.0\r
 C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\obj\Debug\net8.0\agriWeatherTracker.pdb
 C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\obj\Debug\net8.0\agriWeatherTracker.genruntimeconfig.cache
 C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\obj\Debug\net8.0\ref\agriWeatherTracker.dll
+C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\bin\Debug\net8.0\agriWeatherTracker.staticwebassets.runtime.json
+C:\Users\pkmik\Projects\agriWeatherTracker\agriWeatherTracker\obj\Debug\net8.0\agriWeatherTracker.sourcelink.json

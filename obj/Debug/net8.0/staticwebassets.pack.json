@@ -1,0 +1,85 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\Program.cs",
+      "PackagePath": "staticwebassets\\Program.cs"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\asset-manifest.json",
+      "PackagePath": "staticwebassets\\asset-manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\logo192.png",
+      "PackagePath": "staticwebassets\\logo192.png"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\logo512.png",
+      "PackagePath": "staticwebassets\\logo512.png"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\robots.txt",
+      "PackagePath": "staticwebassets\\robots.txt"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\css\\main.f855e6bc.css",
+      "PackagePath": "staticwebassets\\static\\css\\main.f855e6bc.css"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\css\\main.f855e6bc.css.map",
+      "PackagePath": "staticwebassets\\static\\css\\main.f855e6bc.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\js\\453.e68e4b72.chunk.js",
+      "PackagePath": "staticwebassets\\static\\js\\453.e68e4b72.chunk.js"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\js\\453.e68e4b72.chunk.js.map",
+      "PackagePath": "staticwebassets\\static\\js\\453.e68e4b72.chunk.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\js\\main.6e8fb552.js",
+      "PackagePath": "staticwebassets\\static\\js\\main.6e8fb552.js"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\js\\main.6e8fb552.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\static\\js\\main.6e8fb552.js.LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\js\\main.6e8fb552.js.map",
+      "PackagePath": "staticwebassets\\static\\js\\main.6e8fb552.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\static\\media\\logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+      "PackagePath": "staticwebassets\\static\\media\\logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.agriWeatherTracker.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.agriWeatherTracker.props",
+      "PackagePath": "build\\agriWeatherTracker.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.agriWeatherTracker.props",
+      "PackagePath": "buildMultiTargeting\\agriWeatherTracker.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.agriWeatherTracker.props",
+      "PackagePath": "buildTransitive\\agriWeatherTracker.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

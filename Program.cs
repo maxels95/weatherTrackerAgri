@@ -2,6 +2,7 @@ using System.Reflection;
 using AgriWeatherTracker.Data;
 using AgriWeatherTracker.Service;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 try
 {
@@ -9,7 +10,6 @@ try
     builder.Logging.AddConsole();
 
     // Add services to the container.
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
@@ -34,10 +34,10 @@ try
     // Add MVC services
     builder.Services.AddControllers()
     .AddJsonOptions(options =>
-        {
-            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-            options.JsonSerializerOptions.MaxDepth = 500;
-        });
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.MaxDepth = 500;
+    });
 
     var app = builder.Build();
 
@@ -47,7 +47,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-    else 
+    else
     {
         Console.WriteLine("Running in Production Environment");
     }
@@ -59,12 +59,41 @@ try
         dbContext.Database.Migrate(); // Applies pending migrations automatically
     }
 
+    // Serve static files from wwwroot
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "agri_view", "build")),
+        RequestPath = ""
+    });
+
+    // Enable routing
+    app.UseRouting();
+
     app.UseHttpsRedirection();
 
-    app.UseAuthorization(); // Ensure authorization is added if you are using it
+    app.UseAuthorization();
 
     // Map controllers to the pipeline
     app.MapControllers();
+
+    // Fallback to index.html for SPA routing (React)
+    app.MapFallbackToFile("index.html", new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "agri_view", "build"))
+    });
+
+    app.Use(async (context, next) =>
+    {
+        if (context.Request.Path.Value == "/favicon.ico")
+        {
+            context.Response.StatusCode = 204; // No content, tells the browser there's no favicon
+            return;
+        }
+        await next();
+    });
+
 
     app.Run();
 }

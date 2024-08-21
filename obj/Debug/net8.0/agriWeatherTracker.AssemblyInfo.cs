@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("agriWeatherTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34faa79481aa17307e8ef3d76f86c4765dad3cd2")]
 [assembly: System.Reflection.AssemblyProductAttribute("agriWeatherTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("agriWeatherTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

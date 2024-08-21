@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "TFRj60jGhxxYVWp55v//SBl7lG+ss4x83XZtif1VItU=",
+  "Hash": "S0I8XYj7+AO9415OGHPg/7AREuT2SVTfzhyq61bt4WQ=",
   "Source": "agriWeatherTracker",
   "BasePath": "_content/agriWeatherTracker",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "agriWeatherTracker\\wwwroot",
+      "Source": "agriWeatherTracker",
+      "ContentRoot": "C:\\Users\\pkmik\\Projects\\agriWeatherTracker\\agriWeatherTracker\\wwwroot\\",
+      "BasePath": "_content/agriWeatherTracker",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
