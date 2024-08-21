@@ -3,6 +3,7 @@ using System;
 using AgriWeatherTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace agriWeatherTracker.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240821084329_added_signalsGenerated_table")]
+    partial class added_signalsGenerated_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,14 +70,13 @@ namespace agriWeatherTracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CropId");
+                    b.HasIndex("CropId")
+                        .IsUnique();
 
                     b.HasIndex("HealthScoreId")
                         .IsUnique();
 
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("WeatherId")
+                    b.HasIndex("LocationId")
                         .IsUnique();
 
                     b.ToTable("SignalsGenerated");
@@ -112,6 +114,9 @@ namespace agriWeatherTracker.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LocationId");
+
+                    b.HasIndex("SignalGeneratedId")
+                        .IsUnique();
 
                     b.ToTable("Weathers");
                 });
@@ -204,6 +209,9 @@ namespace agriWeatherTracker.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int?>("SignalGeneratedId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -335,6 +343,9 @@ namespace agriWeatherTracker.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("SignalGeneratedId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CropId");
@@ -345,32 +356,27 @@ namespace agriWeatherTracker.Migrations
             modelBuilder.Entity("AgriWeatherTracker.Models.SignalGenerated", b =>
                 {
                     b.HasOne("Crop", "Crop")
-                        .WithMany("SignalsGenerated")
-                        .HasForeignKey("CropId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .WithOne("SignalGenerated")
+                        .HasForeignKey("AgriWeatherTracker.Models.SignalGenerated", "CropId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HealthScore", "HealthScore")
                         .WithOne("SignalGenerated")
                         .HasForeignKey("AgriWeatherTracker.Models.SignalGenerated", "HealthScoreId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Location", "Location")
-                        .WithMany("SignalsGenerated")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("AgriWeatherTracker.Models.Weather", "Weather")
                         .WithOne("SignalGenerated")
-                        .HasForeignKey("AgriWeatherTracker.Models.SignalGenerated", "WeatherId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("AgriWeatherTracker.Models.SignalGenerated", "LocationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Crop");
 
                     b.Navigation("HealthScore");
 
                     b.Navigation("Location");
-
-                    b.Navigation("Weather");
                 });
 
             modelBuilder.Entity("AgriWeatherTracker.Models.Weather", b =>
@@ -381,7 +387,14 @@ namespace agriWeatherTracker.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AgriWeatherTracker.Models.SignalGenerated", "SignalGenerated")
+                        .WithOne("Weather")
+                        .HasForeignKey("AgriWeatherTracker.Models.Weather", "SignalGeneratedId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.Navigation("Location");
+
+                    b.Navigation("SignalGenerated");
                 });
 
             modelBuilder.Entity("GrowthCycle", b =>
@@ -441,9 +454,10 @@ namespace agriWeatherTracker.Migrations
                     b.Navigation("Crop");
                 });
 
-            modelBuilder.Entity("AgriWeatherTracker.Models.Weather", b =>
+            modelBuilder.Entity("AgriWeatherTracker.Models.SignalGenerated", b =>
                 {
-                    b.Navigation("SignalGenerated");
+                    b.Navigation("Weather")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Crop", b =>
@@ -454,7 +468,7 @@ namespace agriWeatherTracker.Migrations
 
                     b.Navigation("Locations");
 
-                    b.Navigation("SignalsGenerated");
+                    b.Navigation("SignalGenerated");
                 });
 
             modelBuilder.Entity("GrowthCycle", b =>
@@ -469,7 +483,7 @@ namespace agriWeatherTracker.Migrations
 
             modelBuilder.Entity("Location", b =>
                 {
-                    b.Navigation("SignalsGenerated");
+                    b.Navigation("SignalGenerated");
                 });
 #pragma warning restore 612, 618
         }

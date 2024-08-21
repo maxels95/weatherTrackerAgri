@@ -11,5 +11,7 @@ namespace AgriWeatherTracker.Models
         public double Rainfall { get; set; }
         public double WindSpeed { get; set; }
         public Location Location { get; set; }
+        public int? SignalGeneratedId { get; set; }
+        public SignalGenerated? SignalGenerated { get; set; }
     }
 }

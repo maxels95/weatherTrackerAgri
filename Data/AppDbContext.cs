@@ -16,6 +16,7 @@ namespace AgriWeatherTracker.Data
         public DbSet<GrowthStage> GrowthStages { get; set; }
         public DbSet<ConditionThreshold> ConditionThresholds { get; set; }
         public DbSet<HealthScore> HealthScores { get; set; }
+        public DbSet<SignalGenerated> SignalsGenerated { get; set; } // Added DbSet for SignalGenerated
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,7 +26,8 @@ namespace AgriWeatherTracker.Data
             modelBuilder.Entity<Crop>()
                 .HasMany(c => c.Locations)
                 .WithOne(l => l.Crop)
-                .HasForeignKey(l => l.CropId);
+                .HasForeignKey(l => l.CropId)
+                .IsRequired(false);
 
             modelBuilder.Entity<Crop>()
                 .HasMany(c => c.HealthScores)
@@ -33,14 +35,14 @@ namespace AgriWeatherTracker.Data
                 .HasForeignKey(hs => hs.CropId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired(false);
-                
+
             modelBuilder.Entity<Location>().Property(p => p.Id).ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Location>()
                 .HasOne(l => l.Crop)
                 .WithMany(c => c.Locations)
                 .HasForeignKey(l => l.CropId)
-                .IsRequired(false);  // Indicates that the foreign key is not required
+                .IsRequired(false);
 
             modelBuilder.Entity<GrowthStage>()
                 .Property(e => e.StartDate)
@@ -81,6 +83,42 @@ namespace AgriWeatherTracker.Data
                 .Property(hs => hs.Date)
                 .HasConversion(v => v.ToUniversalTime(), v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
 
+            // Configure the SignalGenerated entity
+            modelBuilder.Entity<SignalGenerated>()
+                .Property(sg => sg.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<SignalGenerated>()
+                .HasOne(sg => sg.Crop)
+                .WithMany(c => c.SignalsGenerated)
+                .HasForeignKey(sg => sg.CropId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
+
+            modelBuilder.Entity<SignalGenerated>()
+                .HasOne(sg => sg.Location)
+                .WithMany(l => l.SignalsGenerated)
+                .HasForeignKey(sg => sg.LocationId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
+
+            modelBuilder.Entity<SignalGenerated>()
+                .HasOne(sg => sg.HealthScore)
+                .WithOne(hs => hs.SignalGenerated)
+                .HasForeignKey<SignalGenerated>(sg => sg.HealthScoreId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false); // One-to-one relationship
+
+            modelBuilder.Entity<SignalGenerated>()
+                .HasOne(sg => sg.Weather)
+                .WithOne(w => w.SignalGenerated)
+                .HasForeignKey<SignalGenerated>(sg => sg.WeatherId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false); // One-to-one relationship
+
+            modelBuilder.Entity<Weather>()
+                .Property(w => w.SignalGeneratedId)
+                .IsRequired(false); // Make the foreign key nullable
         }
     }
 }

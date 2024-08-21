@@ -1,3 +1,5 @@
+using AgriWeatherTracker.Models;
+
 public class HealthScore
 {
     public int Id { get; set; }
@@ -7,4 +9,6 @@ public class HealthScore
     public Location Location { get; set; }
     public DateTime Date { get; set; }
     public double Score { get; set; }
+    public int? SignalGeneratedId { get; set; }
+    public SignalGenerated? SignalGenerated { get; set; }
 }

@@ -1,5 +1,6 @@
 using System.Reflection;
 using AgriWeatherTracker.Data;
+using AgriWeatherTracker.Repository;
 using AgriWeatherTracker.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -24,6 +25,7 @@ try
     builder.Services.AddScoped<IGrowthCycleRepository, GrowthCycleRepository>();
     builder.Services.AddScoped<IGrowthStageRepository, GrowthStageRepository>();
     builder.Services.AddScoped<IHealthScoreRepository, HealthScoreRepository>();
+    builder.Services.AddScoped<ISignalGeneratedRepository, SignalGeneratedRepository>();
     builder.Services.AddScoped<WeatherHealthService>();
     builder.Services.AddScoped<HealthEvaluatorService>();
     builder.Services.AddTransient<IEmailService, SendGridEmailService>();

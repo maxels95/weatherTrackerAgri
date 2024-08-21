@@ -86,3 +86,7 @@ if __name__ == "__main__":
             if not successful_post:
                 print("Retrying due to unsuccessful attempt...")
             call_count += 1  # Increment the call count after each attempt, successful or not
+
+
+
+# 18 Côte d'Ivoire
